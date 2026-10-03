@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luna Wang</title>
+<meta name="description" content="Luna Wang — high school software engineer in Palo Alto. Code analysis, EEG decoding, robot controls.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #F3F6F4;
+  --ink: #17201D;
+  --muted: #56645F;
+  --rule: #CBD4D0;
+  --accent: #1D6B50;
+  --cell: #B9C6C0;
+  --flag: #B8432F;
+  box-sizing: border-box;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111715; --ink: #E3EAE6; --muted: #98A6A0; --rule: #2C3733;
+    --accent: #72C8A4; --cell: #34433D; --flag: #F08B6F;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111715; --ink: #E3EAE6; --muted: #98A6A0; --rule: #2C3733;
+  --accent: #72C8A4; --cell: #34433D; --flag: #F08B6F;
+}
+html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
+*, *::before, *::after { box-sizing: inherit; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font-size: 1.0625rem; line-height: 1.6; text-rendering: optimizeLegibility;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
+a:hover { text-decoration-thickness: 2px; }
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+img, canvas { max-width: 100%; }
+
+.page { max-width: 46rem; margin: 0 auto; padding: 4.5rem 1.5rem 3rem; }
+
+header h1 {
+  font-size: clamp(2.75rem, 8vw, 4.5rem); line-height: 1; font-weight: 600;
+  letter-spacing: -0.035em; margin: 0 0 1.25rem;
+}
+.intro { font-size: 1.3rem; line-height: 1.45; max-width: 34rem; margin: 0 0 1.25rem; }
+.contact { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin: 0; padding: 0; list-style: none; color: var(--muted); }
+
+figure.field { margin: 3.25rem 0 0; }
+figure.field canvas { display: block; width: 100%; }
+figure.field figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.9rem; max-width: 36rem; }
+.flagdot { display: inline-block; width: 0.55em; height: 0.55em; background: var(--flag); vertical-align: 0.08em; margin-right: 0.15em; }
+
+section { margin-top: 4.5rem; }
+section > h2 {
+  font-size: 1.05rem; font-weight: 600; letter-spacing: 0; color: var(--muted);
+  margin: 0 0 1.75rem; padding-top: 0.9rem; border-top: 1px solid var(--rule);
+}
+
+.item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0 1.5rem; margin-bottom: 2.6rem; }
+.item:last-child { margin-bottom: 0; }
+.when { color: var(--muted); font-size: 0.95rem; padding-top: 0.2rem; font-variant-numeric: tabular-nums; }
+.item h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; margin: 0; }
+.item .sub { color: var(--muted); margin: 0.1rem 0 0.7rem; }
+.item p { margin: 0 0 0.75rem; max-width: 36rem; }
+.item p:last-child { margin-bottom: 0; }
+.item .repo { font-size: 0.95rem; }
+.stack { color: var(--muted); font-size: 0.95rem; }
+
+.story { margin: 0.9rem 0; padding-left: 1rem; border-left: 2px solid var(--rule); max-width: 36rem; }
+.story p { margin: 0 0 0.6rem; }
+.story strong { font-weight: 600; }
+
+.plain p { margin: 0 0 1rem; max-width: 36rem; }
+.plain strong { font-weight: 600; }
+
+footer { margin-top: 5rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.95rem; }
+footer p { margin: 0 0 0.3rem; }
+
+@media (max-width: 40rem) {
+  .page { padding-top: 3rem; }
+  .item { grid-template-columns: 1fr; }
+  .when { padding-top: 0; margin-bottom: 0.15rem; }
+  .intro { font-size: 1.15rem; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+<header>
+  <h1>Luna Wang</h1>
+  <p class="intro">I'm a high school junior in Palo Alto. I build software, and then I check whether it's actually right.</p>
+  <ul class="contact">
+    <li><a href="mailto:zlunawang@gmail.com">zlunawang@gmail.com</a></li>
+    <li><a href="https://github.com/luna-777">github.com/luna-777</a></li>
+    <li><a href="Luna_Wang_CV.pdf">CV (PDF)</a></li>
+    <li>Gunn High School, class of 2028</li>
+  </ul>
+
+  <figure class="field">
+    <canvas id="field" role="img" aria-label="A grid of 4,631 small squares, one per function checked. 9 are highlighted as mismatches."></canvas>
+    <figcaption>Each square is one of the 4,631 functions I used to validate cyclomatic complexity in ts-repo-metrics against three independent tools. After fixes, all but <span class="flagdot" aria-hidden="true"></span>9 matched exactly. (Positions are illustrative.)</figcaption>
+  </figure>
+</header>
+
+<main>
+<section aria-labelledby="h-work">
+  <h2 id="h-work">Projects</h2>
+
+  <article class="item">
+    <div class="when">Summer 2026</div>
+    <div>
+      <h3>ts-repo-metrics</h3>
+      <p class="sub">Code analysis tool, built with a team</p>
+      <p>A shared tool that parses repositories with Tree-sitter and reports code metrics through a CLI, batch runs, and a Next.js dashboard. I rewrote the Cursor log parsing and built authenticated, versioned uploads for each user.</p>
+      <div class="story">
+        <p><strong>What looked fine:</strong> batch runs finished without errors.</p>
+        <p><strong>What was happening:</strong> a parser buffer limit was silently dropping functions, so 197 of them never made it into the results.</p>
+        <p><strong>What I changed:</strong> fixed the limit, then added batch manifests, regression tests, and explicit failure reasons so an incomplete run can't pass as a complete one. I also wrote per-function checks against three independent tools, which reached 99.81% exact agreement on 4,631 functions.</p>
+      </div>
+      <p class="repo"><a href="https://github.com/scottyUX/ts-repo-metrics/tree/msr2027-branch">scottyUX/ts-repo-metrics</a></p>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="when">2026</div>
+    <div>
+      <h3>Sift</h3>
+      <p class="sub">Deterministic rules engine and API</p>
+      <p>A rules engine written in Python, served through FastAPI, with a second implementation in TypeScript. Both versions run against the same shared test vectors, so they can't drift apart. Model suggestions are allowed to inform a result, but checks guarantee they can never override a compatibility decision that's backed by evidence.</p>
+      <p class="stack">Python, FastAPI, TypeScript, pytest</p>
+      <p class="repo"><a href="https://github.com/luna-777/sift">luna-777/sift</a></p>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="when">2026</div>
+    <div>
+      <h3>ALS-Decode</h3>
+      <p class="sub">Brain-signal decoding for assistive communication</p>
+      <p>EEGNet training and per-subject calibration pipelines for motor-imagery and P300 EEG datasets, the kinds of signals used in brain-computer interfaces for people with ALS.</p>
+      <div class="story">
+        <p><strong>What looked fine:</strong> calibrating the model to each person seemed to improve accuracy.</p>
+        <p><strong>What was happening:</strong> the gain came from a silent mismatch of 17 EEG channels between datasets, not from personalization.</p>
+        <p><strong>What I changed:</strong> added channel validation, pinned checkpoints, and regression tests, then reran every experiment across subjects, random seeds, and folds.</p>
+      </div>
+      <p class="stack">PyTorch, MNE, MOABB, Hydra</p>
+      <p class="repo"><a href="https://github.com/luna-777/als-decode-2026">luna-777/als-decode-2026</a></p>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="when">2026</div>
+    <div>
+      <h3>GRT2026</h3>
+      <p class="sub">Robot controls for FRC Team 192</p>
+      <p>Intake-pivot, roller, and hopper controls in our team's shared Java codebase, using TalonFX motors with encoder feedback, current limits, and telemetry. I implemented a motion-profiled pivot and closed-loop roller control, and built autonomous routines in PathPlanner with odometry resets and timeouts and iterated on mechanism settings and paths with teammates.</p>
+      <p class="stack">Java, WPILib, Phoenix 6, PathPlanner</p>
+      <p class="repo"><a href="https://github.com/grt192/GRT2026">grt192/GRT2026</a></p>
+    </div>
+  </article>
+</section>
+
+<section aria-labelledby="h-research">
+  <h2 id="h-research">Research</h2>
+
+  <article class="item">
+    <div class="when">Jun 2026 – now</div>
+    <div>
+      <h3>UC Santa Cruz Science Internship Program</h3>
+      <p class="sub">Research intern</p>
+      <p>I build Python tools that analyze developer prompts for research on AI-assisted programming. Our group of five interns, mentored by Scott Davis and advised by Jose Renau, has work accepted to SIGCSE 2027.</p>
+    </div>
+  </article>
+
+  <article class="item">
+    <div class="when">Jun 2025</div>
+    <div>
+      <h3>Stanford AI4ALL</h3>
+      <p class="sub">Robotics AI team</p>
+      <p>Worked on YOLO object detection and PyBullet robotic-arm simulations for detecting and sorting trash.</p>
+    </div>
+  </article>
+</section>
+
+<section aria-labelledby="h-else" class="plain">
+  <h2 id="h-else">Outside of code</h2>
+  <p><strong>SiliconSparks.</strong> I co-founded this robotics education nonprofit and co-lead it as co-president. I coordinate more than five instructors and write hands-on robotics curricula.</p>
+  <p><strong>Gunn Parliamentary Debate.</strong> As co-captain, I write curriculum and mentor more than 80 students through workshops, practice rounds, and one-on-one feedback.</p>
+  <p><strong>Competitive robotics.</strong> Software and electrical on GRT (FRC 192) since 2025. Before that, software lead on VEX 1806X, which qualified for Worlds in 2024, and a member of FTC 23346, a 2025 state qualifier.</p>
+</section>
+</main>
+
+<footer>
+  <p>The best way to reach me is <a href="mailto:zlunawang@gmail.com">zlunawang@gmail.com</a>.</p>
+  <p>Last updated October 2026.</p>
+</footer>
+
+</div>
+
+<script>
+(function () {
+  var canvas = document.getElementById('field');
+  var ctx = canvas.getContext('2d');
+  var TOTAL = 4631;
+  // 9 mismatches at fixed, spread-out positions (illustrative)
+  var seed = 7, flagged = {};
+  function rand() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  var count = 0;
+  while (count < 9) {
+    var i = Math.floor(rand() * TOTAL);
+    if (!flagged[i]) { flagged[i] = true; count++; }
+  }
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var animated = false;
+
+  function colors() {
+    var s = getComputedStyle(document.documentElement);
+    return { cell: s.getPropertyValue('--cell').trim(), flag: s.getPropertyValue('--flag').trim() };
+  }
+
+  function layout() {
+    var w = canvas.parentElement.clientWidth;
+    var targetH = w < 500 ? 230 : 210;
+    var pitch = Math.sqrt(w * targetH / TOTAL);
+    var cols = Math.floor(w / pitch);
+    pitch = w / cols;
+    var rows = Math.ceil(TOTAL / cols);
+    return { w: w, h: Math.ceil(rows * pitch), cols: cols, pitch: pitch, gap: pitch < 5 ? 1 : 1.5 };
+  }
+
+  function draw(progress, showFlags) {
+    var L = layout(), c = colors();
+    var dpr = window.devicePixelRatio || 1;
+    canvas.width = Math.round(L.w * dpr);
+    canvas.height = Math.round(L.h * dpr);
+    canvas.style.height = L.h + 'px';
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.clearRect(0, 0, L.w, L.h);
+    var n = Math.floor(TOTAL * progress), size = L.pitch - L.gap;
+    for (var k = 0; k < n; k++) {
+      var x = (k % L.cols) * L.pitch, y = Math.floor(k / L.cols) * L.pitch;
+      ctx.fillStyle = (showFlags && flagged[k]) ? c.flag : c.cell;
+      ctx.fillRect(x, y, size, size);
+    }
+  }
+
+  function run() {
+    if (reduce) { draw(1, true); animated = true; return; }
+    var start = null, dur = 900;
+    function step(t) {
+      if (start === null) start = t;
+      var p = Math.min(1, (t - start) / dur);
+      var eased = 1 - Math.pow(1 - p, 3);
+      draw(eased, false);
+      if (p < 1) requestAnimationFrame(step);
+      else setTimeout(function () { draw(1, true); animated = true; }, 250);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function redraw() { if (animated) draw(1, true); }
+  window.addEventListener('resize', redraw);
+  try {
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redraw);
+  } catch (e) {}
+  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(run); else run();
+})();
+</script>
+</body>
+</html>

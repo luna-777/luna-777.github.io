@@ -1,280 +1,290 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Luna Wang</title>
-<meta name="description" content="Luna Wang — high school software engineer in Palo Alto. Code analysis, EEG decoding, robot controls.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --bg: #F3F6F4;
-  --ink: #17201D;
-  --muted: #56645F;
-  --rule: #CBD4D0;
-  --accent: #1D6B50;
-  --cell: #B9C6C0;
-  --flag: #B8432F;
-  box-sizing: border-box;
-  padding-top: env(safe-area-inset-top, 0px);
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --bg: #111715; --ink: #E3EAE6; --muted: #98A6A0; --rule: #2C3733;
-    --accent: #72C8A4; --cell: #34433D; --flag: #F08B6F;
-  }
-}
-:root[data-theme="dark"] {
-  --bg: #111715; --ink: #E3EAE6; --muted: #98A6A0; --rule: #2C3733;
-  --accent: #72C8A4; --cell: #34433D; --flag: #F08B6F;
-}
-html { scroll-padding-top: env(safe-area-inset-top, 0px); -webkit-text-size-adjust: 100%; }
-*, *::before, *::after { box-sizing: inherit; }
-body {
-  margin: 0; background: var(--bg); color: var(--ink);
-  font-family: "Hanken Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  font-size: 1.0625rem; line-height: 1.6; text-rendering: optimizeLegibility;
-}
-a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.18em; }
-a:hover { text-decoration-thickness: 2px; }
-a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
-img, canvas { max-width: 100%; }
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#0c0c0c">
+  <meta name="description" content="Luna Wang — robotics software, machine learning, and research. I build robot controls and rigorous data systems.">
+  <meta property="og:title" content="Luna Wang — Robotics / Research / Software">
+  <meta property="og:description" content="Real robots. Rigorous data. Selected work in robotics software, machine learning and research.">
+  <title>Luna Wang — Robots / Research / Software</title>
+  <style>
+    :root { font-family: Arial, Helvetica, sans-serif; font-synthesis: none; -webkit-font-smoothing: antialiased; }
+    *,*::before,*::after { box-sizing: border-box; }
+    html { scroll-behavior:smooth; scroll-padding-top:85px; }
+    body { margin:0; background:var(--paper); color:var(--ink); min-width:320px; }
+    html[data-theme="light"] { --paper:#f4f3ef; --ink:#111110; --muted:#666661; --line:#c7c6c1; --surface:#e9e8e3; --inverse:#111110; --inverse-ink:#f4f3ef; }
+    html[data-theme="dark"] { --paper:#111110; --ink:#f4f3ef; --muted:#a5a49e; --line:#494945; --surface:#1c1c1b; --inverse:#f4f3ef; --inverse-ink:#111110; }
+    body,button,a { -webkit-tap-highlight-color:transparent; }
+    button { font:inherit; cursor:pointer; }
+    button:focus-visible,a:focus-visible { outline:2px solid currentColor; outline-offset:5px; }
+    a { color:inherit; text-decoration:none; }
+    button { color:inherit; }
+    ::selection { background:var(--ink);color:var(--paper); }
+    .mono { font-family: "Courier New", Courier, monospace; font-size:11px; font-weight:700; letter-spacing:.075em; line-height:1.5; text-transform:uppercase; }
+    .serif { font-family:Georgia, "Times New Roman", serif; font-style:italic; font-weight:400; }
+    .container { width:min(100% - 88px, 1496px);margin-inline:auto; }
+    [hidden] { display:none !important; }
+    .sr-only { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; }
 
-.page { max-width: 46rem; margin: 0 auto; padding: 4.5rem 1.5rem 3rem; }
+    /* -------- Intro -------- */
+    .gate { position:fixed;z-index:1000;inset:0;background:#111110;color:#f4f3ef;display:flex;flex-direction:column;overflow:hidden; transition: transform .9s cubic-bezier(.76,0,.24,1), opacity .85s ease, visibility .85s; }
+    .gate.is-gone { transform:translateY(-102%);opacity:0;visibility:hidden;pointer-events:none; }
+    .gate::after {content:""; position:absolute; inset:0; pointer-events:none; opacity:.075;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 140 140' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Cpath filter='url(%23n)' opacity='.6' d='M0 0h140v140H0z'/%3E%3C/svg%3E"); }
+    .gate-top,.gate-bottom {position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:28px 40px;gap:16px;}
+    .gate-top {border-bottom:1px solid #3c3c3a;}
+    .gate-bottom {border-top:1px solid #3c3c3a;margin-top:auto;color:#b5b5ae;}
+    .gate-logo {font-weight:900;letter-spacing:-.08em;font-size:25px;line-height:1;}
+    .gate-center {position:relative;z-index:2;display:grid;grid-template-columns:1fr auto;align-items:end;gap:32px; width:100%;padding:5vh 5vw 7vh;flex:1;}
+    .gate-h1 {margin:0;font-size:clamp(66px,11.3vw,215px);line-height:.77;font-weight:900;letter-spacing:-.105em;text-transform:uppercase;position:relative;z-index:2;}
+    .gate-h1 span{display:block;}.gate-h1 .outline {color:transparent;-webkit-text-stroke:1px rgba(244,243,239,.85);}
+    .gate-note {position:absolute;top:12%;right:6%;max-width:190px;color:#bebdb5;}
+    .gate-entry {border:1px solid #ecebe5;background:#f4f3ef;color:#111110;border-radius:50%;height:clamp(142px,17vw,240px);width:clamp(142px,17vw,240px);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;align-self:end;flex:none;position:relative;z-index:4;transition:background .25s,color .25s,transform .35s;}
+    .gate-entry:hover {transform:rotate(-8deg) scale(1.04);background:#111110;color:#f4f3ef;}
+    .gate-entry .arr{font-family:Arial,sans-serif;font-size:58px;line-height:.8;font-weight:200;}
+    .gate-orbit {position:absolute;right:8%;top:8%;width:33vw;max-width:580px;aspect-ratio:1;border:1px solid #343432;border-radius:50%;pointer-events:none;}
+    .gate-orbit::before,.gate-orbit::after {content:"";position:absolute;inset:16%;border:1px solid #343432;border-radius:50%;}.gate-orbit::after {inset:33%;}
 
-header h1 {
-  font-size: clamp(2.75rem, 8vw, 4.5rem); line-height: 1; font-weight: 600;
-  letter-spacing: -0.035em; margin: 0 0 1.25rem;
-}
-.intro { font-size: 1.3rem; line-height: 1.45; max-width: 34rem; margin: 0 0 1.25rem; }
-.contact { display: flex; flex-wrap: wrap; gap: 0.4rem 1.5rem; margin: 0; padding: 0; list-style: none; color: var(--muted); }
-
-figure.field { margin: 3.25rem 0 0; }
-figure.field canvas { display: block; width: 100%; }
-figure.field figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 0.9rem; max-width: 36rem; }
-.flagdot { display: inline-block; width: 0.55em; height: 0.55em; background: var(--flag); vertical-align: 0.08em; margin-right: 0.15em; }
-
-section { margin-top: 4.5rem; }
-section > h2 {
-  font-size: 1.05rem; font-weight: 600; letter-spacing: 0; color: var(--muted);
-  margin: 0 0 1.75rem; padding-top: 0.9rem; border-top: 1px solid var(--rule);
-}
-
-.item { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0 1.5rem; margin-bottom: 2.6rem; }
-.item:last-child { margin-bottom: 0; }
-.when { color: var(--muted); font-size: 0.95rem; padding-top: 0.2rem; font-variant-numeric: tabular-nums; }
-.item h3 { font-size: 1.3rem; font-weight: 600; letter-spacing: -0.01em; line-height: 1.3; margin: 0; }
-.item .sub { color: var(--muted); margin: 0.1rem 0 0.7rem; }
-.item p { margin: 0 0 0.75rem; max-width: 36rem; }
-.item p:last-child { margin-bottom: 0; }
-.item .repo { font-size: 0.95rem; }
-.stack { color: var(--muted); font-size: 0.95rem; }
-
-.story { margin: 0.9rem 0; padding-left: 1rem; border-left: 2px solid var(--rule); max-width: 36rem; }
-.story p { margin: 0 0 0.6rem; }
-.story strong { font-weight: 600; }
-
-.plain p { margin: 0 0 1rem; max-width: 36rem; }
-.plain strong { font-weight: 600; }
-
-footer { margin-top: 5rem; padding-top: 1rem; border-top: 1px solid var(--rule); color: var(--muted); font-size: 0.95rem; }
-footer p { margin: 0 0 0.3rem; }
-
-@media (max-width: 40rem) {
-  .page { padding-top: 3rem; }
-  .item { grid-template-columns: 1fr; }
-  .when { padding-top: 0; margin-bottom: 0.15rem; }
-  .intro { font-size: 1.15rem; }
-}
-</style>
+    /* -------- Main site -------- */
+    #site {opacity:0; transform:translateY(25px); transition:opacity 1s .35s ease,transform 1s .35s ease;}
+    #site.ready {opacity:1;transform:none;}
+    .topbar {position:sticky;top:0;z-index:99;background:var(--paper);border-bottom:1px solid var(--ink);}
+    .topbar-inner {height:76px;display:flex;align-items:center;gap:32px;}
+    .brand {font-size:26px;font-weight:900;letter-spacing:-.09em;line-height:1;flex-shrink:0;}
+    .topbar-mid {margin:auto;display:flex;gap:37px;align-items:center;}
+    .topbar-mid a {transition:opacity .2s;}.topbar-mid a:hover {opacity:.45;}
+    .topbar-end {display:flex;gap:18px;align-items:center;}
+    .location {white-space:nowrap;display:flex;gap:8px;align-items:center;}
+    .location::before {content:"";width:6px;height:6px;background:var(--ink);border-radius:50%;display:block;}
+    .invert {border:1px solid var(--ink);background:var(--paper);min-width:84px;padding:10px 12px;transition:background .2s,color .2s;}
+    .invert:hover {background:var(--ink);color:var(--paper);}
+    .hero {border-bottom:1px solid var(--ink);min-height:calc(100svh - 76px);display:flex;flex-direction:column;justify-content:space-between;}
+    .hero-upper {display:flex;justify-content:space-between;gap:20px;padding-top:28px;}
+    .hero h1 {margin:clamp(58px,11vh,156px) 0 clamp(36px,7vh,110px);font-size:clamp(67px,10.65vw,180px);font-weight:900;line-height:.9;letter-spacing:-.095em;text-transform:uppercase;max-width:1300px;}
+    .hero h1 .outline {color:transparent;-webkit-text-stroke:1.5px var(--ink);}
+    .hero h1 .serif {font-size:.83em;letter-spacing:-.085em;text-transform:none;white-space:nowrap;}
+    .hero-footer {display:grid;grid-template-columns:1.25fr 1fr;gap:60px;border-top:1px solid var(--line);padding:27px 0 32px;align-items:end;}
+    .hero-footer p {font-size:clamp(18px,2.1vw,28px);line-height:1.28;letter-spacing:-.04em;max-width:630px;margin:0;font-weight:500;}
+    .hero-footer-right {display:flex;justify-content:space-between;align-items:end;gap:20px;}
+    .round-arrow {width:52px;height:52px;border:1px solid var(--ink);display:flex;align-items:center;justify-content:center;border-radius:50%;font-size:24px;transition:background .25s,color .25s,transform .25s;}
+    .round-arrow:hover {background:var(--ink);color:var(--paper);transform:translateY(5px);}
+    .ticker {background:var(--inverse);color:var(--inverse-ink);border-bottom:1px solid var(--line);padding:17px 0;overflow:hidden;white-space:nowrap;}
+    .ticker-inner{display:flex;gap:45px;align-items:center;min-width:max-content;animation:marquee 35s linear infinite;}
+    .ticker-item {display:inline-flex;align-items:center;gap:40px;}.ticker-dot {font-size:16px;font-weight:400;}
+    @keyframes marquee{to{transform:translateX(-50%);}}
+    .section {padding:116px 0 128px;border-bottom:1px solid var(--ink);}
+    .section-heading{display:flex;justify-content:space-between;gap:32px;align-items:end;padding-bottom:26px;border-bottom:1px solid var(--ink);margin-bottom:48px;}
+    .section-heading h2 {margin:0;font-size:clamp(50px,8vw,126px);letter-spacing:-.086em;line-height:.88;font-weight:900;text-transform:uppercase;}
+    .section-heading aside {max-width:245px;text-align:right;color:var(--muted);line-height:1.5;}
+    .intro-grid {display:grid;grid-template-columns:1.2fr .8fr;gap:12vw;padding-bottom:90px;}
+    .intro-lede {font-size:clamp(28px,4.2vw,65px);line-height:1.04;letter-spacing:-.065em;margin:0;font-weight:600;}
+    .intro-aside {display:flex;flex-direction:column;justify-content:end;gap:20px;}
+    .intro-aside p {font-size:17px;line-height:1.55;color:var(--muted);margin:0;max-width:440px;}
+    .metrics {display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--ink);}
+    .metric {padding:22px 28px 0 0;min-height:220px;display:flex;flex-direction:column;justify-content:space-between;}
+    .metric+.metric{border-left:1px solid var(--line);padding-left:28px;}
+    .metric-number{font-size:clamp(65px,8.5vw,142px);line-height:.85;letter-spacing:-.085em;font-weight:900;}
+    .metric-label{color:var(--muted);max-width:270px;line-height:1.5;}
+    .work-head {display:flex;justify-content:space-between;align-items:end;gap:20px;margin:0 0 23px;}
+    .filters{display:flex;gap:5px;flex-wrap:wrap;}.filter{border:1px solid var(--line);background:transparent;border-radius:30px;padding:11px 17px;color:var(--muted);transition:all .2s;}
+    .filter:hover,.filter[aria-pressed="true"]{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+    .projects {display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .project{border:1px solid var(--ink);padding:30px;display:flex;flex-direction:column;gap:26px;min-height:540px;position:relative;overflow:hidden;background:var(--paper);transition:background .25s;}
+    .project:hover{background:var(--surface);}
+    .project.featured{grid-column:span 2;min-height:530px;display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+    .project-top{display:flex;justify-content:space-between;align-items:start;gap:20px;}
+    .project-kind{color:var(--muted);margin-top:7px;}
+    .project-body{display:flex;flex-direction:column;justify-content:flex-end;flex:1;position:relative;z-index:1;}
+    .project h3{font-size:clamp(42px,5.2vw,86px);line-height:.9;letter-spacing:-.075em;margin:0 0 22px;font-weight:850;}
+    .project:not(.featured) h3{font-size:clamp(38px,4vw,65px);}
+    .project p {font-size:16px;line-height:1.53;color:var(--muted);max-width:590px;margin:0 0 24px;}
+    .tags{display:flex;gap:7px;flex-wrap:wrap;}
+    .tag{border:1px solid var(--line);font-size:10px;font-family:"Courier New",monospace;letter-spacing:.055em;text-transform:uppercase;padding:7px 9px;}
+    .project-link{display:inline-flex;gap:9px;align-items:center;border-bottom:1px solid var(--ink);padding-bottom:6px;width:max-content;margin-top:33px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;transition:gap .2s;}
+    .project-link:hover{gap:21px;}
+    .feature-visual{display:flex;align-items:center;justify-content:center;border:1px solid var(--line);margin:0;background:var(--surface);position:relative;min-height:370px;overflow:hidden;}
+    .feature-visual svg{width:86%;max-width:580px;height:auto;opacity:.9;}
+    .feature-visual .vis-label{position:absolute;left:23px;bottom:20px;color:var(--muted);}
+    .card-graphic{margin:auto 0 0;min-height:145px;display:flex;align-items:end;justify-content:space-between;position:relative;overflow:hidden;}
+    .big-data{font-weight:900;font-size:clamp(84px,11vw,148px);line-height:.85;letter-spacing:-.095em;white-space:nowrap;}
+    .big-data small{font-size:22px;letter-spacing:-.04em;margin-left:6px;}
+    .bar-container{border:1px solid var(--ink);height:17px;margin-top:22px;position:relative;}
+    .bar-fill{height:100%;background:var(--ink);width:99.81%;}
+    .logger-window{border:1px solid var(--ink);width:100%;height:161px;overflow:hidden;}
+    .logger-head{border-bottom:1px solid var(--ink);height:30px;display:flex;align-items:center;justify-content:space-between;padding:0 12px;}
+    .logger-row{display:grid;grid-template-columns:85px 1fr 50px;gap:8px;border-bottom:1px solid var(--line);padding:9px 12px;color:var(--muted);}
+    .matrix{display:grid;grid-template-columns:repeat(17,1fr);gap:3px;width:100%;margin-bottom:15px;}.matrix i{height:42px;background:var(--ink);opacity:.2;}.matrix i:nth-child(3n){opacity:.8}.matrix i:nth-child(4n){opacity:.5}
+    .notice{padding:18px 0;color:var(--muted);}
+    .research-row{display:grid;grid-template-columns:155px 1fr 145px;gap:30px;border-bottom:1px solid var(--line);padding:37px 0;align-items:start;}
+    .research-row:first-of-type{border-top:1px solid var(--ink);}
+    .research-row h3{font-size:clamp(25px,3vw,42px);letter-spacing:-.05em;line-height:1.1;margin:0 0 13px;}
+    .research-row p{font-size:16px;color:var(--muted);line-height:1.5;margin:0;max-width:760px;}
+    .research-status{border:1px solid var(--ink);display:inline-block;text-align:center;padding:8px 10px;white-space:nowrap;}
+    .about-layout {display:grid;grid-template-columns:1.15fr .85fr;gap:10vw;}
+    .about-text {font-size:clamp(25px,3.5vw,48px);letter-spacing:-.055em;line-height:1.17;margin:0;}
+    .stack-header{padding-bottom:15px;border-bottom:1px solid var(--ink);}
+    .stack-row{display:grid;grid-template-columns:110px 1fr;gap:12px;padding:21px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.5;}
+    .stack-row .mono{color:var(--muted);}
+    .contact{background:var(--inverse);color:var(--inverse-ink);padding:92px 0 36px;}
+    .contact h2{font-size:clamp(67px,13vw,200px);font-weight:900;letter-spacing:-.095em;line-height:.82;margin:54px 0 70px;}
+    .contact h2 .serif {font-size:.8em;text-transform:none;}
+    .contact-actions{display:flex;justify-content:space-between;gap:30px;align-items:end;padding-bottom:80px;}
+    .contact-actions p {max-width:380px;line-height:1.5;color:var(--inverse-ink);opacity:.7;}
+    .contact-buttons{display:flex;gap:9px;flex-wrap:wrap;}
+    .contact-btn{display:inline-flex;align-items:center;gap:35px;padding:18px 24px;background:transparent;border:1px solid var(--inverse-ink);color:var(--inverse-ink);transition:background .2s,color .2s;}
+    .contact-btn:hover{background:var(--inverse-ink);color:var(--inverse);}
+    .footer{border-top:1px solid currentColor;padding:25px 0 0;display:flex;justify-content:space-between;gap:12px;opacity:.65;}
+    .reveal {opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}.reveal.visible{opacity:1;transform:none;}
+    #copyFeedback{min-width:50px;display:block;}
+    @media (max-width:1100px) { .container{width:min(100% - 54px, 1496px)} .topbar-mid{gap:18px}.hero h1{font-size:clamp(66px,10.5vw,130px)} .gate-h1{font-size:11vw}.gate-center{align-items:center}.gate-entry{align-self:end}.project.featured{min-height:490px}.project{min-height:570px;} }
+    @media (max-width:760px) { .container{width:calc(100% - 36px)}.gate-top,.gate-bottom{padding:19px}.gate-center{display:flex;flex-direction:column;justify-content:center;align-items:stretch;gap:32px;padding:40px 20px 24px}.gate-note{position:static;max-width:250px;order:-1}.gate-h1{font-size:clamp(70px,17vw,128px)}.gate-entry{width:150px;height:150px;align-self:flex-end}.gate-orbit{width:75vw;top:22%;right:-22%}.gate-bottom span:last-child{display:none}.topbar-inner{height:65px;gap:15px}.topbar-mid{margin:auto;gap:14px}.topbar-mid a{font-size:10px}.topbar-end{gap:7px}.topbar .location{display:none}.invert{min-width:65px;padding:8px}.hero{min-height:calc(100svh - 65px)}.hero-upper{padding-top:20px}.hero h1{font-size:clamp(63px,12.2vw,110px);margin:90px 0 80px}.hero-footer{grid-template-columns:1fr;gap:25px}.hero-footer-right{gap:12px}.section{padding:75px 0 88px}.section-heading{align-items:end;margin-bottom:30px}.section-heading h2{font-size:clamp(48px,12vw,84px)}.section-heading aside{font-size:10px;max-width:125px}.intro-grid,.about-layout{grid-template-columns:1fr;gap:27px}.intro-grid{padding-bottom:60px}.metrics{grid-template-columns:1fr}.metric{min-height:auto;padding:25px 0}.metric+.metric{padding-left:0;border-left:0;border-top:1px solid var(--line)}.metric-number{font-size:83px}.metric-label{margin-top:12px}.projects{grid-template-columns:1fr;gap:10px}.project,.project.featured{grid-column:auto;min-height:auto;padding:22px}.project.featured{display:flex;flex-direction:column}.project.featured .feature-visual{min-height:220px;order:2}.project.featured .project-body{order:1}.project:not(.featured){min-height:460px}.project h3{font-size:56px}.project:not(.featured) h3{font-size:48px}.card-graphic{min-height:120px}.work-head{align-items:flex-start;flex-direction:column;gap:15px}.research-row{grid-template-columns:1fr auto;gap:13px;padding:27px 0}.research-row h3{font-size:28px}.research-row>span:first-child{grid-column:1/-1}.research-status{font-size:10px}.stack-row{grid-template-columns:95px 1fr}.contact{padding-top:70px}.contact h2{font-size:clamp(69px,15.5vw,140px);margin:45px 0 50px}.contact-actions{flex-direction:column;align-items:start;padding-bottom:60px}.footer{flex-wrap:wrap}.contact-btn{padding:15px 18px;gap:15px}}
+    @media (max-width:420px){.topbar-mid{gap:9px}.topbar-mid a{font-size:9px}.hero h1{font-size:12vw}.gate-bottom{font-size:9px}.project:not(.featured) h3{font-size:42px}.contact-btn{padding:14px}.intro-lede{font-size:32px}}
+    @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none;}}
+  </style>
 </head>
 <body>
-<div class="page">
+  <a class="sr-only" href="#main">Skip to main content</a>
+  <div id="gate" class="gate" role="dialog" aria-modal="true" aria-labelledby="gateTitle">
+    <div class="gate-top mono"><div class="gate-logo" aria-label="Luna Wang">LW<span aria-hidden="true">/</span></div><span>THE PORTFOLIO / 2026</span><span>SELECTED WORK — 01/01</span></div>
+    <div class="gate-orbit" aria-hidden="true"></div>
+    <div class="gate-center">
+      <div class="gate-note mono">A collection of things built, tested, broken, and made more reliable.</div>
+      <h1 id="gateTitle" class="gate-h1"><span>LOOK</span><span class="outline">CLOSER.</span></h1>
+      <button id="enterBtn" class="gate-entry" type="button" aria-label="Enter Luna Wang's portfolio"><span class="mono">ENTER SITE</span><span class="arr" aria-hidden="true">↗</span><span class="mono">CLICK TO OPEN</span></button>
+    </div>
+    <div class="gate-bottom mono"><span>ROBOTICS / MACHINE LEARNING / RESEARCH</span><span>DESIGNED TO BE EXPLORED ↗</span><span>PALO ALTO, CA</span></div>
+  </div>
 
-<header>
-  <h1>Luna Wang</h1>
-  <p class="intro">I'm a high school junior in Palo Alto. I build software, and then I check whether it's actually right.</p>
-  <ul class="contact">
-    <li><a href="mailto:zlunawang@gmail.com">zlunawang@gmail.com</a></li>
-    <li><a href="https://github.com/luna-777">github.com/luna-777</a></li>
-    <li><a href="Luna_Wang_CV.pdf">CV (PDF)</a></li>
-    <li>Gunn High School, class of 2028</li>
-  </ul>
-
-  <figure class="field">
-    <canvas id="field" role="img" aria-label="A grid of 4,631 small squares, one per function checked. 9 are highlighted as mismatches."></canvas>
-    <figcaption>Each square is one of the 4,631 functions I used to validate cyclomatic complexity in ts-repo-metrics against three independent tools. After fixes, all but <span class="flagdot" aria-hidden="true"></span>9 matched exactly. (Positions are illustrative.)</figcaption>
-  </figure>
-</header>
-
-<main>
-<section aria-labelledby="h-work">
-  <h2 id="h-work">Projects</h2>
-
-  <article class="item">
-    <div class="when">Summer 2026</div>
-    <div>
-      <h3>ts-repo-metrics</h3>
-      <p class="sub">Code analysis tool, built with a team</p>
-      <p>A shared tool that parses repositories with Tree-sitter and reports code metrics through a CLI, batch runs, and a Next.js dashboard. I rewrote the Cursor log parsing and built authenticated, versioned uploads for each user.</p>
-      <div class="story">
-        <p><strong>What looked fine:</strong> batch runs finished without errors.</p>
-        <p><strong>What was happening:</strong> a parser buffer limit was silently dropping functions, so 197 of them never made it into the results.</p>
-        <p><strong>What I changed:</strong> fixed the limit, then added batch manifests, regression tests, and explicit failure reasons so an incomplete run can't pass as a complete one. I also wrote per-function checks against three independent tools, which reached 99.81% exact agreement on 4,631 functions.</p>
+  <div id="site" aria-hidden="true">
+    <header class="topbar">
+      <div class="container topbar-inner">
+        <a class="brand" href="#home" aria-label="Luna Wang home">LW/</a>
+        <nav class="topbar-mid mono" aria-label="Main navigation"><a href="#work">WORK</a><a href="#research">RESEARCH</a><a href="#about">ABOUT</a><a href="#contact">CONTACT</a></nav>
+        <div class="topbar-end"><span class="location mono">PALO ALTO, CA</span><button id="themeBtn" class="invert mono" type="button" aria-label="Invert color theme">INVERT ◐</button></div>
       </div>
-      <p class="repo"><a href="https://github.com/scottyUX/ts-repo-metrics/tree/msr2027-branch">scottyUX/ts-repo-metrics</a></p>
-    </div>
-  </article>
-
-  <article class="item">
-    <div class="when">2026</div>
-    <div>
-      <h3>Sift</h3>
-      <p class="sub">Deterministic rules engine and API</p>
-      <p>A rules engine written in Python, served through FastAPI, with a second implementation in TypeScript. Both versions run against the same shared test vectors, so they can't drift apart. Model suggestions are allowed to inform a result, but checks guarantee they can never override a compatibility decision that's backed by evidence.</p>
-      <p class="stack">Python, FastAPI, TypeScript, pytest</p>
-      <p class="repo"><a href="https://github.com/luna-777/sift">luna-777/sift</a></p>
-    </div>
-  </article>
-
-  <article class="item">
-    <div class="when">2026</div>
-    <div>
-      <h3>ALS-Decode</h3>
-      <p class="sub">Brain-signal decoding for assistive communication</p>
-      <p>EEGNet training and per-subject calibration pipelines for motor-imagery and P300 EEG datasets, the kinds of signals used in brain-computer interfaces for people with ALS.</p>
-      <div class="story">
-        <p><strong>What looked fine:</strong> calibrating the model to each person seemed to improve accuracy.</p>
-        <p><strong>What was happening:</strong> the gain came from a silent mismatch of 17 EEG channels between datasets, not from personalization.</p>
-        <p><strong>What I changed:</strong> added channel validation, pinned checkpoints, and regression tests, then reran every experiment across subjects, random seeds, and folds.</p>
-      </div>
-      <p class="stack">PyTorch, MNE, MOABB, Hydra</p>
-      <p class="repo"><a href="https://github.com/luna-777/als-decode-2026">luna-777/als-decode-2026</a></p>
-    </div>
-  </article>
-
-  <article class="item">
-    <div class="when">2026</div>
-    <div>
-      <h3>GRT2026</h3>
-      <p class="sub">Robot controls for FRC Team 192</p>
-      <p>Intake-pivot, roller, and hopper controls in our team's shared Java codebase, using TalonFX motors with encoder feedback, current limits, and telemetry. I implemented a motion-profiled pivot and closed-loop roller control, and built autonomous routines in PathPlanner with odometry resets and timeouts and iterated on mechanism settings and paths with teammates.</p>
-      <p class="stack">Java, WPILib, Phoenix 6, PathPlanner</p>
-      <p class="repo"><a href="https://github.com/grt192/GRT2026">grt192/GRT2026</a></p>
-    </div>
-  </article>
-</section>
-
-<section aria-labelledby="h-research">
-  <h2 id="h-research">Research</h2>
-
-  <article class="item">
-    <div class="when">Jun 2026 – now</div>
-    <div>
-      <h3>UC Santa Cruz Science Internship Program</h3>
-      <p class="sub">Research intern</p>
-      <p>I build Python tools that analyze developer prompts for research on AI-assisted programming. Our group of five interns, mentored by Scott Davis and advised by Jose Renau, has work accepted to SIGCSE 2027.</p>
-    </div>
-  </article>
-
-  <article class="item">
-    <div class="when">Jun 2025</div>
-    <div>
-      <h3>Stanford AI4ALL</h3>
-      <p class="sub">Robotics AI team</p>
-      <p>Worked on YOLO object detection and PyBullet robotic-arm simulations for detecting and sorting trash.</p>
-    </div>
-  </article>
-</section>
-
-<section aria-labelledby="h-else" class="plain">
-  <h2 id="h-else">Outside of code</h2>
-  <p><strong>SiliconSparks.</strong> I co-founded this robotics education nonprofit and co-lead it as co-president. I coordinate more than five instructors and write hands-on robotics curricula.</p>
-  <p><strong>Gunn Parliamentary Debate.</strong> As co-captain, I write curriculum and mentor more than 80 students through workshops, practice rounds, and one-on-one feedback.</p>
-  <p><strong>Competitive robotics.</strong> Software and electrical on GRT (FRC 192) since 2025. Before that, software lead on VEX 1806X, which qualified for Worlds in 2024, and a member of FTC 23346, a 2025 state qualifier.</p>
-</section>
-</main>
-
-<footer>
-  <p>The best way to reach me is <a href="mailto:zlunawang@gmail.com">zlunawang@gmail.com</a>.</p>
-  <p>Last updated October 2026.</p>
-</footer>
-
-</div>
-
-<script>
-(function () {
-  var canvas = document.getElementById('field');
-  var ctx = canvas.getContext('2d');
-  var TOTAL = 4631;
-  // 9 mismatches at fixed, spread-out positions (illustrative)
-  var seed = 7, flagged = {};
-  function rand() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
-  var count = 0;
-  while (count < 9) {
-    var i = Math.floor(rand() * TOTAL);
-    if (!flagged[i]) { flagged[i] = true; count++; }
-  }
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var animated = false;
-
-  function colors() {
-    var s = getComputedStyle(document.documentElement);
-    return { cell: s.getPropertyValue('--cell').trim(), flag: s.getPropertyValue('--flag').trim() };
-  }
-
-  function layout() {
-    var w = canvas.parentElement.clientWidth;
-    var targetH = w < 500 ? 230 : 210;
-    var pitch = Math.sqrt(w * targetH / TOTAL);
-    var cols = Math.floor(w / pitch);
-    pitch = w / cols;
-    var rows = Math.ceil(TOTAL / cols);
-    return { w: w, h: Math.ceil(rows * pitch), cols: cols, pitch: pitch, gap: pitch < 5 ? 1 : 1.5 };
-  }
-
-  function draw(progress, showFlags) {
-    var L = layout(), c = colors();
-    var dpr = window.devicePixelRatio || 1;
-    canvas.width = Math.round(L.w * dpr);
-    canvas.height = Math.round(L.h * dpr);
-    canvas.style.height = L.h + 'px';
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    ctx.clearRect(0, 0, L.w, L.h);
-    var n = Math.floor(TOTAL * progress), size = L.pitch - L.gap;
-    for (var k = 0; k < n; k++) {
-      var x = (k % L.cols) * L.pitch, y = Math.floor(k / L.cols) * L.pitch;
-      ctx.fillStyle = (showFlags && flagged[k]) ? c.flag : c.cell;
-      ctx.fillRect(x, y, size, size);
-    }
-  }
-
-  function run() {
-    if (reduce) { draw(1, true); animated = true; return; }
-    var start = null, dur = 900;
-    function step(t) {
-      if (start === null) start = t;
-      var p = Math.min(1, (t - start) / dur);
-      var eased = 1 - Math.pow(1 - p, 3);
-      draw(eased, false);
-      if (p < 1) requestAnimationFrame(step);
-      else setTimeout(function () { draw(1, true); animated = true; }, 250);
-    }
-    requestAnimationFrame(step);
-  }
-
-  function redraw() { if (animated) draw(1, true); }
-  window.addEventListener('resize', redraw);
-  try {
-    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', redraw);
-  } catch (e) {}
-  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
-
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(run); else run();
-})();
-</script>
+    </header>
+    <main id="main">
+      <section id="home" class="hero container" aria-labelledby="heroTitle">
+        <div class="hero-upper mono"><span>01 — LUNA WANG</span><span>ROBOTICS × ML × SYSTEMS</span></div>
+        <h1 id="heroTitle">REAL <span class="outline">ROBOTS.</span><br>RIGOROUS <span class="serif">data.</span></h1>
+        <div class="hero-footer">
+          <p>I'm Luna. I build robot controls, machine-learning pipelines, and tools that catch what other systems miss.</p>
+          <div class="hero-footer-right"><span class="mono">STUDENT ENGINEER & RESEARCHER<br>HENRY M. GUNN HIGH SCHOOL<br>CLASS OF 2028</span><a class="round-arrow" href="#intro" aria-label="Scroll to introduction">↓</a></div>
+        </div>
+      </section>
+      <div class="ticker" aria-label="Selected tools and disciplines"><div class="ticker-inner mono" aria-hidden="true">
+        <span class="ticker-item">WPILIB <span class="ticker-dot">✳</span> PYTORCH <span class="ticker-dot">✳</span> ROBOT CONTROLS <span class="ticker-dot">✳</span> DATA VALIDATION <span class="ticker-dot">✳</span> PYTHON <span class="ticker-dot">✳</span> COMPUTER VISION <span class="ticker-dot">✳</span> EXPERIMENTAL DESIGN <span class="ticker-dot">✳</span></span>
+        <span class="ticker-item">WPILIB <span class="ticker-dot">✳</span> PYTORCH <span class="ticker-dot">✳</span> ROBOT CONTROLS <span class="ticker-dot">✳</span> DATA VALIDATION <span class="ticker-dot">✳</span> PYTHON <span class="ticker-dot">✳</span> COMPUTER VISION <span class="ticker-dot">✳</span> EXPERIMENTAL DESIGN <span class="ticker-dot">✳</span></span>
+      </div></div>
+      <section id="intro" class="section"><div class="container">
+        <div class="intro-grid reveal"><h2 class="intro-lede">A good system doesn't just work. It tells you <span class="serif">when it doesn't.</span></h2><div class="intro-aside"><span class="mono">/ PHILOSOPHY</span><p>From FRC robots to EEG decoding, I care about the gap between a system that appears correct and one you can actually trust. I like building the hardware-facing software, then interrogating the data behind it.</p></div></div>
+        <div class="metrics reveal" aria-label="Selected engineering metrics">
+          <div class="metric"><span class="metric-number">17<span class="serif" style="font-size:.6em">/</span>17</span><span class="metric-label mono">EEG CHANNELS MISORDERED — A SILENT VALIDATION FAILURE IDENTIFIED</span></div>
+          <div class="metric"><span class="metric-number">4,631</span><span class="metric-label mono">FUNCTIONS CROSS-VALIDATED IN SOFTWARE RESEARCH</span></div>
+          <div class="metric"><span class="metric-number">99.81<span class="serif" style="font-size:.5em">%</span></span><span class="metric-label mono">EXACT CYCLOMATIC-COMPLEXITY AGREEMENT AFTER FIXES</span></div>
+        </div>
+      </div></section>
+      <section id="work" class="section"><div class="container">
+        <div class="section-heading reveal"><div><div class="mono" style="margin-bottom:22px">02 / SELECTED WORK</div><h2>THE WORK<span class="serif">.</span></h2></div><aside class="mono">REAL MACHINES, IMPERFECT DATA, AND THE SYSTEMS BETWEEN.</aside></div>
+        <div class="work-head reveal"><span id="projectCount" class="mono">SHOWING 05 PROJECTS</span><div class="filters" role="group" aria-label="Filter projects"><button class="filter mono" data-filter="all" aria-pressed="true">ALL (05)</button><button class="filter mono" data-filter="robotics" aria-pressed="false">ROBOTICS</button><button class="filter mono" data-filter="ml" aria-pressed="false">ML / RESEARCH</button><button class="filter mono" data-filter="tools" aria-pressed="false">DATA TOOLS</button></div></div>
+        <div class="projects" id="projectList">
+          <article class="project featured reveal" data-categories="robotics">
+            <div class="project-body"><div class="project-top"><span class="mono">01 / FEATURED PROJECT</span><span class="mono project-kind">ON HARDWARE / 2026</span></div><div style="flex:1;min-height:65px"></div><h3>GRT<span class="serif">2026.</span><br>ROBOT CONTROLS.</h3><p>Real mechanism code for FRC Team 192. Developed closed-loop intake, pivot, roller, and hopper controls; integrated TalonFX motors, encoder feedback, telemetry, and PathPlanner autonomous routines. Built to behave on the actual robot—not just in simulation.</p><div class="tags"><span class="tag">Java</span><span class="tag">WPILib</span><span class="tag">Phoenix 6</span><span class="tag">PathPlanner</span><span class="tag">Hardware debugging</span></div><a class="project-link mono" target="_blank" rel="noopener noreferrer" href="https://github.com/grt192/GRT2026">VIEW TEAM CODE <span aria-hidden="true">↗</span></a></div>
+            <figure class="feature-visual" aria-label="Abstract line diagram representing feedback control loops"><svg viewBox="0 0 500 330" role="img" aria-label="An abstract diagram of connected robot mechanisms and sensor feedback"><g fill="none" stroke="currentColor" stroke-width="1"><path d="M70 250H435V75H210V250" opacity=".35" stroke-dasharray="3 7"/><circle cx="250" cy="160" r="114" opacity=".2"/><circle cx="250" cy="160" r="78" opacity=".38"/><circle cx="250" cy="160" r="43"/><path d="M250 45V274M135 160H365" opacity=".25" stroke-dasharray="4 6"/><path d="M170 245L223 188L286 139L365 82" stroke-width="2.5"/><path d="M286 139L326 196L413 196" stroke-width="2"/></g><g fill="currentColor"><circle cx="170" cy="245" r="6"/><circle cx="223" cy="188" r="5"/><circle cx="286" cy="139" r="7"/><circle cx="365" cy="82" r="6"/><circle cx="326" cy="196" r="5"/><circle cx="413" cy="196" r="6"/></g><g fill="currentColor" font-family="monospace" font-size="10" opacity=".9"><text x="75" y="264">SENSOR IN</text><text x="375" y="72">TARGET</text><text x="335" y="219">ACTUATOR</text><text x="244" y="306">FEEDBACK LOOP / 192</text></g></svg><figcaption class="vis-label mono">SYSTEM DIAGRAM / ILLUSTRATIVE</figcaption></figure>
+          </article>
+          <article class="project reveal" data-categories="ml tools">
+            <div class="project-top"><span class="mono">02 / ML & VALIDATION</span><span class="mono project-kind">RESEARCH / 2026</span></div><div class="card-graphic" aria-hidden="true"><div style="width:100%"><div class="matrix" id="electrodeMatrix"></div><div class="mono" style="display:flex;justify-content:space-between"><span>EXPECTED MONTAGE</span><span>0 OF 17 MATCHED</span></div></div></div><div class="project-body"><h3>ALS<span class="serif">-</span>DECODE.</h3><p>Built PyTorch EEGNet training and calibration pipelines. Traced a misleading personalization result to an EEG electrode-order mismatch, then added input validation and reran reproducibility checks.</p><div class="tags"><span class="tag">PyTorch</span><span class="tag">Python</span><span class="tag">MNE / MOABB</span><span class="tag">Evaluation</span></div><a class="project-link mono" href="https://github.com/luna-777/als-decode-2026" target="_blank" rel="noopener noreferrer">VIEW RESEARCH CODE <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="project reveal" data-categories="tools">
+            <div class="project-top"><span class="mono">03 / PIPELINES & TESTING</span><span class="mono project-kind">UCSC / 2026</span></div><div class="card-graphic" aria-hidden="true"><div style="width:100%"><div class="big-data">99.81<small>%</small></div><div class="bar-container"><div class="bar-fill"></div></div><div style="display:flex;justify-content:space-between;margin-top:10px" class="mono"><span>4,631 FUNCTIONS</span><span>EXACT AGREEMENT</span></div></div></div><div class="project-body"><h3>TS<span class="serif">-</span>REPO<span class="serif">-</span>METRICS.</h3><p>Cross-validated a repository-analysis pipeline against three independent tools, fixed silent omissions of 197 functions, and improved tests and failure reporting. Research with Scott Davis and Prof. José Renau at UCSC.</p><div class="tags"><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">Tree-sitter</span><span class="tag">Validation</span></div><a class="project-link mono" target="_blank" rel="noopener noreferrer" href="https://github.com/scottyUX/ts-repo-metrics">VIEW PROJECT <span aria-hidden="true">↗</span></a></div>
+          </article>
+          <article class="project reveal" data-categories="robotics ml">
+            <div class="project-top"><span class="mono">04 / ROBOT PERCEPTION</span><span class="mono project-kind">STANFORD AI4ALL / 2025</span></div><div class="card-graphic" style="align-items:center;min-height:170px" aria-hidden="true"><svg viewBox="0 0 460 150" width="100%" style="height:150px"><g fill="none" stroke="currentColor" stroke-width="1.6"><rect x="10" y="17" width="440" height="117" stroke-dasharray="4 5" opacity=".3"/><path d="M58 116h70l31-37h56l38-30h55l24 34h68"/><circle cx="130" cy="115" r="9"/><circle cx="215" cy="79" r="9"/><circle cx="310" cy="49" r="9"/><rect x="301" y="23" width="49" height="56" stroke-dasharray="4 3"/><path d="M324 23v-9M324 79v12M301 50h-15M350 50h20" opacity=".6"/></g><text x="13" y="145" font-family="monospace" font-size="10" fill="currentColor">VISION → SIMULATION → MANIPULATION</text></svg></div><div class="project-body"><h3>VISION <span class="serif">to</span> ACTION.</h3><p>Collaborated on YOLO object detection and PyBullet robotic-arm simulation for automated waste sorting. Worked with URDF robot models and applied computer vision in a robotics setting.</p><div class="tags"><span class="tag">YOLO</span><span class="tag">PyBullet</span><span class="tag">URDF</span><span class="tag">Robotics simulation</span></div></div>
+          </article>
+          <article class="project reveal" data-categories="robotics tools">
+            <div class="project-top"><span class="mono">05 / DEBUGGING INTERFACE</span><span class="mono project-kind">PERSONAL TOOL / 2025</span></div><div class="card-graphic" aria-hidden="true"><div class="logger-window"><div class="logger-head mono"><span>● ROBOT LOGGER</span><span>LIVE / MONITOR</span></div><div class="logger-row mono"><span>00:12.064</span><span>INTAKE / ACTIVE</span><span>OK</span></div><div class="logger-row mono"><span>00:12.121</span><span>PIVOT / POSITION</span><span>42.6°</span></div><div class="logger-row mono"><span>00:12.204</span><span>DRIVE / UPDATE</span><span>OK</span></div></div></div><div class="project-body"><h3>ROBOT <span class="serif">LOGGER.</span></h3><p>Built a Python desktop prototype for robot log inspection with timestamped events, subsystem filters, file export, and a NetworkTables listener. Designed to make robot behavior easier to understand.</p><div class="tags"><span class="tag">Python</span><span class="tag">PySide6</span><span class="tag">NetworkTables</span><span class="tag">Visualization</span></div></div>
+          </article>
+        </div>
+        <p class="notice mono" id="filterLive" aria-live="polite">05 PROJECTS / SELECT A FILTER TO EXPLORE</p>
+      </div></section>
+      <section id="research" class="section"><div class="container"><div class="section-heading reveal"><div><div class="mono" style="margin-bottom:22px">03 / WRITTEN & TESTED</div><h2>RESEARCH<span class="serif">.</span></h2></div><aside class="mono">PUBLICATIONS AND SUBMISSIONS, WITH THEIR STATUS CLEARLY MARKED.</aside></div>
+        <div class="research-row reveal"><span class="mono">IEEE SSCI / 2027<br>SOLE AUTHOR</span><div><h3>When the channels look right but the data is wrong.</h3><p>Research audit of EEG-based neural decoding and adaptation, showing how a silent 17-electrode montage mismatch can distort conclusions about model personalization. Scheduled for in-person presentation in Australia in 2027.</p></div><span class="research-status mono">ACCEPTED ↗</span></div>
+        <div class="research-row reveal"><span class="mono">MSR / 2027<br>FIRST AUTHOR OF SIX</span><div><h3>Software metrics you can actually verify.</h3><p>First author of a six-author research submission on repository analysis and engineering metrics, developed through the UCSC research team.</p></div><span class="research-status mono">SUBMITTED ↗</span></div>
+        <div class="research-row reveal"><span class="mono">ACM SIGCSE / 2027<br>CO-AUTHOR</span><div><h3>Studying how developers work with AI.</h3><p>Co-authored computing-education research through UC Santa Cruz with mentorship from Scott Davis and faculty guidance from Prof. José Renau.</p></div><span class="research-status mono">SUBMITTED ↗</span></div>
+      </div></section>
+      <section id="about" class="section"><div class="container"><div class="section-heading reveal"><div><div class="mono" style="margin-bottom:22px">04 / THE PERSON BEHIND THE CODE</div><h2>ABOUT<span class="serif">.</span></h2></div><aside class="mono">CURIOUS ABOUT THE SPACE BETWEEN MODELS AND MACHINES.</aside></div>
+        <div class="about-layout reveal"><div><p class="about-text">I'm a student engineer in Palo Alto working across <span class="serif">robotics, machine learning,</span> and experimental research. I like the whole loop: building, collecting signals, finding what went wrong, and making the next iteration better.</p><div style="margin-top:40px" class="mono">PREVIOUSLY: VEX WORLDS QUALIFIER · FTC STATE QUALIFIER<br>STANFORD AI4ALL · UCSC RESEARCH</div></div><div><div class="stack-header mono">/ THE TOOLBOX</div><div class="stack-row"><span class="mono">CODE</span><span>Python · Java · TypeScript · JavaScript</span></div><div class="stack-row"><span class="mono">ROBOTICS</span><span>WPILib · CTRE Phoenix 6 · PathPlanner · PyBullet · URDF</span></div><div class="stack-row"><span class="mono">ML / DATA</span><span>PyTorch · NumPy · pandas · scikit-learn · MNE / MOABB</span></div><div class="stack-row"><span class="mono">PRACTICE</span><span>Telemetry · Debugging · Validation · Reproducible experiments · Documentation</span></div><div class="stack-row"><span class="mono">ALSO</span><span>Co-founder of Silicon Sparks, a nonprofit expanding access to robotics education.</span></div></div></div>
+      </div></section>
+    </main>
+    <footer id="contact" class="contact"><div class="container"><span class="mono">05 / LET'S MAKE SOMETHING WORK</span><h2>GOT A <span class="serif">hard</span><br>PROBLEM<span class="serif">?</span></h2><div class="contact-actions"><div><span class="mono">OPEN TO CONVERSATIONS ABOUT ROBOTICS & ROBOT LEARNING</span><p>I’m especially interested in real-world data collection, system reliability, and robot learning.</p></div><div class="contact-buttons"><a class="contact-btn mono" href="mailto:zlunawang@gmail.com">SEND AN EMAIL <span aria-hidden="true">↗</span></a><button class="contact-btn mono" id="copyBtn" type="button">COPY EMAIL <span id="copyFeedback" aria-live="polite">+</span></button><a class="contact-btn mono" href="https://github.com/luna-777" target="_blank" rel="noopener noreferrer">GITHUB <span aria-hidden="true">↗</span></a></div></div><div class="footer mono"><span>© <span id="year">2026</span> LUNA WANG</span><span>MADE WITH INTENTION. NO FRAMEWORK REQUIRED.</span><a href="#home">BACK TO TOP ↑</a></div></div></footer>
+  </div>
+  <script>
+    (() => {
+      'use strict';
+      const gate = document.getElementById('gate');
+      const site = document.getElementById('site');
+      const enterBtn = document.getElementById('enterBtn');
+      let entered = false;
+      function enter() {
+        if (entered) return;
+        entered = true;
+        gate.classList.add('is-gone');
+        site.classList.add('ready');
+        site.removeAttribute('aria-hidden');
+        gate.setAttribute('aria-hidden','true');
+        document.body.style.overflow = '';
+        window.setTimeout(() => document.querySelector('.brand').focus({preventScroll:true}), 450);
+      }
+      document.body.style.overflow = 'hidden';
+      enterBtn.addEventListener('click', enter);
+      gate.addEventListener('keydown', e => { if (e.key === 'Enter' && e.target === gate) enter(); });
+      // Keep keyboard focus inside the opening entry screen until the visitor enters.
+      document.addEventListener('keydown', e => {
+        if (entered || e.key !== 'Tab') return;
+        e.preventDefault(); enterBtn.focus();
+      });
+      enterBtn.focus({preventScroll:true});
+      const themeBtn = document.getElementById('themeBtn');
+      themeBtn.addEventListener('click', () => {
+        document.documentElement.dataset.theme = document.documentElement.dataset.theme === 'light' ? 'dark' : 'light';
+        themeBtn.setAttribute('aria-label', document.documentElement.dataset.theme === 'dark' ? 'Switch to light colors' : 'Invert color theme');
+      });
+      const buttons = [...document.querySelectorAll('.filter')];
+      const projects = [...document.querySelectorAll('.project')];
+      const count = document.getElementById('projectCount');
+      const live = document.getElementById('filterLive');
+      buttons.forEach(button => button.addEventListener('click', () => {
+        const current = button.dataset.filter;
+        buttons.forEach(b => b.setAttribute('aria-pressed', String(b === button)));
+        let visible = 0;
+        projects.forEach(project => {
+          const matches = current === 'all' || project.dataset.categories.split(' ').includes(current);
+          project.hidden = !matches;
+          if (matches) visible++;
+        });
+        count.textContent = `SHOWING ${String(visible).padStart(2,'0')} PROJECT${visible === 1 ? '' : 'S'}`;
+        live.textContent = `${visible} PROJECT${visible === 1 ? '' : 'S'} SHOWN / FILTER: ${current.toUpperCase()}`;
+      }));
+      // Decorative matrix: 17 boxes are a visualization of the audit, not experimental output.
+      document.getElementById('electrodeMatrix').innerHTML = Array.from({length:17},()=>'<i></i>').join('');
+      const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if ('IntersectionObserver' in window && !reduced) {
+        const io = new IntersectionObserver(entries => entries.forEach(entry => {
+          if (entry.isIntersecting) { entry.target.classList.add('visible'); io.unobserve(entry.target); }
+        }), {threshold:.09,rootMargin:'0px 0px -20px 0px'});
+        document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+      } else document.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+      document.getElementById('year').textContent = new Date().getFullYear();
+      document.getElementById('copyBtn').addEventListener('click', async () => {
+        const feedback = document.getElementById('copyFeedback');
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error('Clipboard unavailable');
+          await navigator.clipboard.writeText('zlunawang@gmail.com');
+          feedback.textContent='COPIED';
+        } catch (_) { feedback.textContent='USE EMAIL LINK'; }
+        window.setTimeout(()=>feedback.textContent='+',2400);
+      });
+    })();
+  </script>
 </body>
 </html>

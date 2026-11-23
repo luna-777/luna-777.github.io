@@ -124,7 +124,8 @@
     .research-row:first-of-type{border-top:1px solid var(--ink);}
     .research-row h3{font-size:clamp(25px,3vw,42px);letter-spacing:-.05em;line-height:1.1;margin:0 0 13px;}
     .research-row p{font-size:16px;color:var(--muted);line-height:1.5;margin:0;max-width:760px;}
-    .research-status{border:1px solid var(--ink);display:inline-block;text-align:center;padding:8px 10px;white-space:nowrap;}
+    .research-status{border:1px solid var(--ink);display:inline-block;text-align:center;padding:8px 10px;white-space:nowrap;transition:background .2s,color .2s;}
+    a.research-status:hover{background:var(--ink);color:var(--paper);}
     .about-layout {display:grid;grid-template-columns:1.15fr .85fr;gap:10vw;}
     .about-text {font-size:clamp(25px,3.5vw,48px);letter-spacing:-.055em;line-height:1.17;margin:0;}
     .stack-header{padding-bottom:15px;border-bottom:1px solid var(--ink);}
@@ -157,7 +158,7 @@
       <h1 id="gateTitle" class="gate-h1"><span>LOOK</span><span class="outline">CLOSER.</span></h1>
       <button id="enterBtn" class="gate-entry" type="button" aria-label="Enter Luna Wang's portfolio"><img src="cursor.png" alt="" width="238" height="350"><span class="click-word" aria-hidden="true">CLICK</span></button>
     </div>
-    <div class="gate-bottom mono"><span>ROBOTICS / MACHINE LEARNING / RESEARCH</span><span> ↗</span><span>PALO ALTO, CA</span></div>
+    <div class="gate-bottom mono"><span>ROBOTICS / MACHINE LEARNING / RESEARCH</span><span> ↗</span><span></span></div>
   </div>
 
   <div id="site" aria-hidden="true">
@@ -213,9 +214,9 @@
         <p class="notice mono" id="filterLive" aria-live="polite">05 PROJECTS / SELECT A FILTER TO EXPLORE</p>
       </div></section>
       <section id="research" class="section"><div class="container"><div class="section-heading reveal"><div><div class="mono" style="margin-bottom:22px">03 / WRITTEN & TESTED</div><h2>RESEARCH<span class="serif">.</span></h2></div><aside class="mono">PUBLICATIONS AND SUBMISSIONS, WITH THEIR STATUS CLEARLY MARKED.</aside></div>
-        <div class="research-row reveal"><span class="mono">IEEE SSCI / 2027<br>SOLE AUTHOR</span><div><h3>When the channels look right but the data is wrong.</h3><p>Research audit of EEG-based neural decoding and adaptation, showing how a silent 17-electrode montage mismatch can distort conclusions about model personalization. Scheduled for in-person presentation in Australia in 2027.</p></div><span class="research-status mono">ACCEPTED ↗</span></div>
-        <div class="research-row reveal"><span class="mono">MSR / 2027<br>FIRST AUTHOR OF SIX</span><div><h3>Software metrics you can actually verify.</h3><p>First author of a six-author research submission on repository analysis and engineering metrics, developed through the UCSC research team.</p></div><span class="research-status mono">SUBMITTED ↗</span></div>
-        <div class="research-row reveal"><span class="mono">ACM SIGCSE / 2027<br>CO-AUTHOR</span><div><h3>Studying how developers work with AI.</h3><p>Co-authored computing-education research through UC Santa Cruz with mentorship from Scott Davis and faculty guidance from Prof. José Renau.</p></div><span class="research-status mono">SUBMITTED ↗</span></div>
+        <div class="research-row reveal"><span class="mono">IEEE SSCI / 2027<br>SOLE AUTHOR</span><div><h3>When the channels look right but the data is wrong.</h3><p>Research audit of EEG-based neural decoding and adaptation, showing how a silent 17-electrode montage mismatch can distort conclusions about model personalization. Scheduled for in-person presentation in Australia in 2027.</p></div><a class="research-status mono" href="https://attend.ieee.org/ssci-2027/" target="_blank" rel="noopener noreferrer" aria-label="Accepted — IEEE SSCI 2027 website">ACCEPTED ↗</a></div>
+        <div class="research-row reveal"><span class="mono">MSR / 2027<br>FIRST AUTHOR OF SIX</span><div><h3>Software metrics you can actually verify.</h3><p>First author of a six-author research submission on repository analysis and engineering metrics, developed through the UCSC research team.</p></div><a class="research-status mono" href="https://2027.msrconf.org/" target="_blank" rel="noopener noreferrer" aria-label="Submitted — MSR 2027 website">SUBMITTED ↗</a></div>
+        <div class="research-row reveal"><span class="mono">ACM SIGCSE / 2027<br>CO-AUTHOR</span><div><h3>Studying how developers work with AI.</h3><p>Co-authored computing-education research through UC Santa Cruz with mentorship from Scott Davis and faculty guidance from Prof. José Renau.</p></div><a class="research-status mono" href="https://2027.sigcse-ts.acm.org/" target="_blank" rel="noopener noreferrer" aria-label="Submitted — ACM SIGCSE TS 2027 website">SUBMITTED ↗</a></div>
       </div></section>
       <section id="about" class="section"><div class="container"><div class="section-heading reveal"><div><div class="mono" style="margin-bottom:22px">04 / THE PERSON BEHIND THE CODE</div><h2>ABOUT<span class="serif">.</span></h2></div><aside class="mono">CURIOUS ABOUT THE SPACE BETWEEN MODELS AND MACHINES.</aside></div>
         <div class="about-layout reveal"><div><p class="about-text">I'm a student engineer in Palo Alto working across <span class="serif">robotics, machine learning,</span> and experimental research. I like the whole loop: building, collecting signals, finding what went wrong, and making the next iteration better.</p><div style="margin-top:40px" class="mono">PREVIOUSLY: VEX WORLDS QUALIFIER · FTC STATE QUALIFIER<br>STANFORD HAI · UCSC RESEARCH</div></div><div><div class="stack-header mono">/ THE TOOLBOX</div><div class="stack-row"><span class="mono">CODE</span><span>Python · Java · TypeScript · JavaScript</span></div><div class="stack-row"><span class="mono">ROBOTICS</span><span>WPILib · CTRE Phoenix 6 · PathPlanner · PyBullet · URDF</span></div><div class="stack-row"><span class="mono">ML / DATA</span><span>PyTorch · NumPy · pandas · scikit-learn · MNE / MOABB</span></div><div class="stack-row"><span class="mono">PRACTICE</span><span>Telemetry · Debugging · Validation · Reproducible experiments · Documentation</span></div><div class="stack-row"><span class="mono">ALSO</span><span>Co-founder of Silicon Sparks, a nonprofit expanding access to robotics education.</span></div></div></div>
